@@ -1,0 +1,163 @@
+/* Portal · selector d'informes de patrocini (una sola pantalla).
+   El moviment viu a portal.js i ../comu/. Aquí: maquetació, estats de hover
+   només CSS i estats inicials gated per html.motion-ok. */
+
+@font-face{font-family:Lab;src:local('Helvetica Neue'),local('HelveticaNeue'),local('Arial'),local('ArialMT');font-display:swap}
+@font-face{font-family:Lab;src:local('Helvetica Neue Bold'),local('HelveticaNeue-Bold'),local('Arial Bold'),local('Arial-BoldMT');font-weight:700;font-display:swap}
+@font-face{font-family:Instrument;src:url('nescafe/assets/InstrumentSerif.ttf');font-display:swap}
+
+*{box-sizing:border-box}
+html{color-scheme:light}
+body{
+  margin:0;background:#f7f6f1;color:#161815;font:16px/1.45 Lab,Arial,sans-serif;
+  --gutter:clamp(20px,4.5vw,75px);
+  --h1:clamp(49px,6.7vw,107px);
+  --hair:#858881;
+  /* Capa compartida (comu/motion.css) */
+  --accent:#161815;--accent-ink:#f7f6f1;
+  --focus-ink:#161815;--focus-halo:#f7f6f1;
+}
+a{color:inherit;text-underline-offset:4px}
+
+/* Mateixa amplada útil que l'antic <main> amb farciment lateral */
+.shell{width:calc(min(1640px,100%) - 2*var(--gutter));margin-inline:auto}
+
+.site-head,.foot,.heading{display:flex;justify-content:space-between;align-items:center;gap:14px}
+.site-head{padding:22px 0;border-bottom:1px solid var(--hair)}
+.site-head span,.foot{font-size:14px}
+
+.heading{align-items:end;padding:44px 0 25px}
+.heading h1{font-size:var(--h1);letter-spacing:-.06em;line-height:.93;margin:0}
+/* 28ch: el subtítol cap en dues línies, sense una paraula sola a la tercera. */
+.heading p{max-width:28ch;margin:0;line-height:1.3;text-wrap:pretty}
+
+/* ---------- Targetes ---------- */
+.pages{display:grid;grid-template-columns:1fr 1fr;gap:var(--pages-gap);--pages-gap:15px}
+/* Alçada limitada per la finestra perquè el portal hi càpiga sencer, peu inclòs: la resta
+   de la pàgina fa uns 280 px més l'alçada del títol (line-height .93). */
+.panel{position:relative;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;isolation:isolate;color:white;text-decoration:none;min-height:clamp(290px,min(41vw,calc(100svh - 280px - .93 * var(--h1))),600px);--pad:clamp(18px,2.7vw,45px);padding:var(--pad);background:#312720}
+.nes{--card-accent:#ad2922;--accent:#ad2922;--accent-ink:#fff}
+.cont{--card-accent:#ffb91c;--accent:#ffb91c;--accent-ink:#161815}
+
+.art,.shade{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.art{object-fit:cover}
+/* Marge fix d'imatge per al desplaçament de punter (±12 px a portal.js):
+   no depèn del zoom, així el fons de la targeta no apareix mai a la vora. */
+.portal-lens .art{inset:-14px;width:calc(100% + 28px);height:calc(100% + 28px)}
+.cont .art{object-position:71% 50%}
+.nes .art{object-position:59% 50%}
+.shade{background:linear-gradient(180deg,rgba(0,0,0,.28),transparent 30%,rgba(0,0,0,.16) 44%,rgba(0,0,0,.76) 100%)}
+/* Focus de llum que segueix el cursor (--mx/--my des de portal.js) */
+.shade::after{content:"";position:absolute;inset:0;opacity:0;pointer-events:none;
+  background:radial-gradient(ellipse 65% 85% at var(--mx,50%) var(--my,50%),rgba(255,255,255,.13),rgba(255,255,255,0) 38%,rgba(0,0,0,.24) 100%);
+  transition:opacity var(--dur-3,420ms) var(--ease-out,ease-out)}
+.portal-lens .panel:hover .shade::after{opacity:1}
+
+.logotype{width:130px;height:auto}
+.cont .logotype{width:160px;filter:invert(1)}
+.meta{font-size:13px;margin:0 0 6px}
+.row{display:flex;align-items:end;justify-content:space-between;gap:var(--row-gap);--row-gap:12px;--arrow:45px}
+.row h2{font-size:clamp(43px,5.6vw,91px);letter-spacing:-.065em;line-height:.96;margin:0;text-wrap:balance}
+.nes h2{font-family:Instrument,Georgia,serif;font-weight:400;letter-spacing:-.03em}
+
+.arrow{border:1px solid #fff9;border-radius:50%;width:var(--arrow);height:var(--arrow);display:grid;place-items:center;flex:none;font-size:24px}
+.arrow-glyph{display:block;line-height:1;transition:transform var(--dur-3,420ms) var(--ease-out,ease-out)}
+.panel:hover .arrow-glyph,.panel:focus-visible .arrow-glyph{transform:rotate(45deg)}
+
+.strip{height:5px;position:absolute;bottom:0;left:0;right:0;background:var(--card-accent);transform-origin:left center}
+
+/* ---------- Avançament de dades (sempre al DOM) ---------- */
+.kpi{display:grid;grid-template-rows:1fr;margin:0;font-size:13px}
+.kpi[hidden]{display:none}
+.kpi-clip{min-height:0;overflow:hidden}
+.kpi-in{display:block;padding-bottom:6px;font-variant-numeric:tabular-nums}
+.kpi-n{font-weight:700}
+/* Plegat només amb punter fi i moviment actiu; es desplega en hover o focus. */
+@media (hover:hover) and (pointer:fine){
+  .motion-ok .kpi{grid-template-rows:0fr;opacity:0;transition:grid-template-rows var(--dur-3,420ms) var(--ease-out,ease-out),opacity var(--dur-2,220ms) var(--ease-out,ease-out)}
+  .motion-ok .kpi-in{transform:translateY(100%);transition:transform var(--dur-3,420ms) var(--ease-out,ease-out)}
+  .motion-ok .panel:hover .kpi,.motion-ok .panel:focus-visible .kpi{grid-template-rows:1fr;opacity:1}
+  .motion-ok .panel:hover .kpi-in,.motion-ok .panel:focus-visible .kpi-in{transform:none}
+}
+
+/* ---------- Resposta de la targeta germana (només CSS) ---------- */
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) and (min-width:781px){
+  .pages{transition:grid-template-columns var(--dur-3,420ms) var(--ease-out,ease-out);container-type:inline-size}
+  /* Mesura fixa del títol = amplada útil de la targeta comprimida (.8fr), calculada
+     sobre l'amplada de .pages (cqw), que no canvia amb el hover. Així el títol té el
+     mateix nombre de línies en repòs, comprimit i expandit, i no salta durant la transició. */
+  .row h2{max-width:calc((100cqw - var(--pages-gap)) * .4 - 2 * var(--pad) - var(--arrow) - var(--row-gap) - 2px)}
+  .pages:has(.nes:hover){grid-template-columns:1.2fr .8fr}
+  .pages:has(.cont:hover){grid-template-columns:.8fr 1.2fr}
+  .panel{transition:filter var(--dur-3,420ms) var(--ease-out,ease-out)}
+  .pages:has(.panel:hover) .panel:not(:hover){filter:grayscale(.6) brightness(.8)}
+}
+
+/* Sense la capa de moviment (biblioteques no carregades): zoom CSS de reserva.
+   Amb portal-motion, GSAP controla el transform de .art en exclusiva. */
+@media (prefers-reduced-motion:no-preference){
+  html:not(.portal-motion) .art{transition:transform .8s cubic-bezier(.2,.7,.3,1)}
+  html:not(.portal-motion) .panel:hover .art,html:not(.portal-motion) .panel:focus-visible .art{transform:scale(1.045)}
+}
+
+/* ---------- Peu ---------- */
+.site-foot{padding-bottom:30px}
+.foot{padding:19px 0;align-items:baseline;border-bottom:1px solid var(--hair);flex-wrap:wrap}
+.foot nav{display:flex;gap:22px;flex-wrap:wrap}
+.foot a,.sources a{text-decoration-color:rgba(22,24,21,.35);transition:text-decoration-color var(--dur-2,220ms) var(--ease-out,ease-out),color var(--dur-2,220ms) var(--ease-out,ease-out)}
+.foot a:hover,.sources a:hover{text-decoration-color:currentColor}
+.sources{border-bottom:1px solid var(--hair);padding:16px 0}
+.sources summary{cursor:pointer;width:fit-content;font-size:15px;transition:color var(--dur-2,220ms) var(--ease-out,ease-out)}
+.sources summary:hover{color:#4a4d47}
+.sources ul{padding-left:20px;line-height:1.55}
+.sources li+li{margin-top:5px}
+
+/* ---------- Estats inicials de la coreografia d'entrada ----------
+   Només mentre motion.js prepara l'animació (failsafe de 3 s a comu/). */
+.motion-ok:not(.motion-ready) .heading h1,
+.motion-ok:not(.motion-ready) .panel{visibility:hidden}
+.motion-ok:not(.motion-ready) .site-head,
+.motion-ok:not(.motion-ready) .foot,
+.motion-ok:not(.motion-ready) .sources{border-bottom-color:transparent}
+
+/* Etiqueta del cursor (comu/motion.js): es replega cap al punter quan taparia la
+   fletxa magnètica (portal.js posa .portal-arrow-zone). clip-path no el toca GSAP. */
+.portal-lens .line-cursor{transition:clip-path var(--dur-2,220ms) var(--ease-out,ease-out)}
+.portal-lens.portal-arrow-zone .line-cursor{clip-path:inset(0 100% 0 0)}
+
+/* ---------- Sortida cap a l'informe (portal.js) ----------
+   Una còpia fixa dels mitjans de la targeta creix fins a la finestra. La targeta
+   original no es mou: .pages puja per sobre de la còpia, la targeta perd el fons i
+   els mitjans, i el seu text s'esvaeix al lloc. Tot es desfà en tornar (pageshow). */
+.portal-exit{position:fixed;inset:0;z-index:40;overflow:hidden}
+.portal-exit-frame{position:absolute;overflow:hidden;isolation:isolate;background:#312720}
+.portal-exit-art{position:absolute;z-index:-1;display:block;max-width:none;margin:0;object-fit:cover}
+.portal-lens .portal-exit-frame.is-lit .shade::after{opacity:1}
+.portal-exiting .pages{position:relative;z-index:41}
+.portal-exiting .panel.is-exiting{background:transparent}
+.portal-exiting .panel.is-exiting>.art,
+.portal-exiting .panel.is-exiting>.shade,
+.portal-exiting .panel.is-exiting>.strip{visibility:hidden}
+.portal-exiting .panel:not(.is-exiting){pointer-events:none}
+.portal-exiting .line-cursor{visibility:hidden!important}
+/* L'avançament de dades ja obert en clicar (.kpi-held, portal.js) queda obert mentre
+   s'esvaeix, encara que el punter surti. Si era plegat, no s'obre: cap salt de layout. */
+@media (hover:hover) and (pointer:fine){
+  .motion-ok.portal-exiting .panel.is-exiting.kpi-held .kpi{grid-template-rows:1fr;opacity:1}
+  .motion-ok.portal-exiting .panel.is-exiting.kpi-held .kpi-in{transform:none}
+}
+
+@media(max-width:780px){
+  .heading{align-items:start;flex-direction:column}
+  .heading p{max-width:none}
+  .pages{grid-template-columns:1fr}
+  .panel{min-height:clamp(260px,65vw,400px)}
+  .row h2{font-size:clamp(46px,8vw,67px)}
+  .logotype{width:100px}
+  .cont .logotype{width:135px}
+  .heading{padding:34px 0 20px}
+  .row{--arrow:36px}
+}
+@media(prefers-reduced-motion:reduce){
+  .arrow-glyph,.shade::after{transition:none}
+}

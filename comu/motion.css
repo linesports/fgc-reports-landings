@@ -1,0 +1,71 @@
+/* LINE · capa de moviment compartida per a les landings de patrocini.
+   Els estats inicials només existeixen sota html.motion-ok. Sense JS, amb una
+   càrrega fallida o amb moviment reduït, el contingut es mostra en l’estat final. */
+
+:root{
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --ease-in:cubic-bezier(.7,0,.84,0);
+  --ease-io:cubic-bezier(.65,0,.35,1);
+  --dur-1:120ms;   /* resposta immediata */
+  --dur-2:220ms;   /* canvi d’estat */
+  --dur-3:420ms;   /* capa o maquetació */
+  --dur-4:720ms;   /* una sola entrada per pàgina */
+  --stagger:60ms;
+  --focus-ink:#111;
+  --focus-halo:#fff;
+  --accent:#111;
+  --accent-ink:#fff;
+}
+
+/* Superfícies del navegador */
+::selection{background:var(--accent);color:var(--accent-ink)}
+:where(a,button,summary,select,[tabindex]):focus-visible{
+  outline:2px solid var(--focus-ink)!important;
+  outline-offset:3px!important;
+  box-shadow:0 0 0 5px var(--focus-halo)!important;
+  transition:none!important;
+}
+:where(a){text-underline-offset:.22em;text-decoration-thickness:1px}
+.tnum{font-variant-numeric:tabular-nums}
+
+/* Revelacions: amagades només fins que motion.js ha preparat l’animació.
+   Si alguna cosa falla, motion-ready s’afegeix igualment al cap de 3 s. */
+.motion-ok:not(.motion-ready) [data-reveal],
+.motion-ok:not(.motion-ready) [data-reveal-up]{visibility:hidden}
+/* SplitText crea .line-mask al voltant de cada línia. El farciment evita retallar
+   ascendents i descendents de títols amb interlineat molt tancat. */
+.line-mask{padding-block:.14em;margin-block:-.14em}
+.line-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+/* Lenis gestiona el desplaçament suau; el de CSS el desincronitzaria. */
+html.lenis,html.lenis body{scroll-behavior:auto!important}
+/* Enllaços de la capçalera fixa: el scroll-padding-top de l’arrel és més gran que la seva
+   posició dins la capçalera, i en rebre el focus (Chromium ja en fer clic) el navegador
+   desplaçava la pàgina cap amunt abans de saltar a l’àncora. Amb el marge negatiu, l’enllaç
+   ja compta com a visible i el focus no mou res. Valor provat a Chromium i WebKit: amb
+   -110px o més, WebKit torna a desplaçar la pàgina pels enllaços alts (logotip de Nescafé). */
+:where(.mast) a{scroll-margin-top:-100px}
+
+/* Filets que es dibuixen d’esquerra a dreta */
+.motion-ok [data-draw]{transform-origin:left center}
+
+/* Línia de progrés de lectura */
+.line-progress{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--accent);transform-origin:left center;transform:scaleX(0);pointer-events:none}
+html:not(.motion-ok) .line-progress{display:none}
+
+/* Indicador lliscant de la navegació */
+.nav-ink{position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--accent);pointer-events:none;opacity:0}
+html:not(.motion-ok) .nav-ink{display:none}
+
+/* Etiqueta contextual del cursor. No substitueix el cursor del sistema. */
+.line-cursor{position:fixed;left:0;top:0;z-index:50;pointer-events:none;
+  font:700 11px/1 Lab,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;
+  padding:9px 12px;background:var(--accent);color:var(--accent-ink);
+  opacity:0;visibility:hidden;white-space:nowrap;will-change:transform,opacity}
+
+/* Comptadors: mida reservada per evitar salts de maquetació */
+[data-count-ready]{display:inline-block;font-variant-numeric:tabular-nums}
+
+@media (prefers-reduced-motion:reduce){
+  .line-cursor,.line-progress,.nav-ink{display:none!important}
+}

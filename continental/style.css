@@ -1,0 +1,144 @@
+@font-face{font-family:Lab;src:local('Helvetica Neue'),local('HelveticaNeue'),local('Arial'),local('ArialMT');font-weight:400;font-display:swap}
+@font-face{font-family:Lab;src:local('Helvetica Neue Bold'),local('HelveticaNeue-Bold'),local('Arial Bold'),local('Arial-BoldMT');font-weight:700;font-display:swap}
+:root{--orange:#ffb91c;--black:#121512;--mast-h:72px;--line:#bcbeb4;--muted:#54594e;--mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  /* Fons de secció */--paper:#f7f6f0;--cream:var(--paper);--hero-ground:#292f2e;--panel:#1c211f;--ground:#212821;--panel-deep:#181e19;
+  /* Tintes per polaritat (fons de banda, fase 3) */--ink-paper:#121512;--ink-paper-2:#54594e;--mark-paper:#987014;--ink-ground:#f3f5e8;--ink-ground-2:#c2ccb9;--rule-ground:#596255}
+*{box-sizing:border-box}html{scroll-padding-top:calc(var(--mast-h) + 16px)}body{--accent:#ffb91c;--accent-ink:#121512;--focus-ink:#121512;--focus-halo:#ffb91c;margin:0;background:var(--paper);color:var(--black);font:400 16px/1.45 Lab,Arial,sans-serif}a{color:inherit}h1,h2,h3,p,dl,dd,figure{margin:0}.inner{max-width:1540px;width:calc(100% - clamp(40px,8vw,128px));margin:auto}.skip{position:absolute;left:0;top:-10rem;background:white;padding:10px;z-index:40}.skip:focus{top:0}
+.top{position:sticky;top:0;z-index:30;background:var(--orange);color:#111}.mast,.logos,.mast nav,.hero-head,.headline,.caption,.title-line,.instrument-top,.switches,.readout,footer,.foot-marks{display:flex;align-items:center}.mast{min-height:var(--mast-h);justify-content:space-between;gap:16px}.logos,.foot-marks{gap:14px}.logos img,.foot-marks img{display:block;object-fit:contain}.logos img:first-child,.foot-marks img:first-child{width:138px;height:auto}.logos img:last-child,.foot-marks img:last-child{width:66px;height:auto}.logos span,.foot-marks span{font-weight:400}.mast nav{gap:24px}.mast nav a,footer a{color:var(--black);text-decoration-thickness:1px;text-underline-offset:5px}.mast nav a{font-size:14px}
+.hero{position:relative;background:var(--hero-ground);color:white;overflow:hidden}.hero-content{position:relative;height:clamp(375px,46vw,655px);display:flex;flex-direction:column;justify-content:space-between;padding:25px 0 37px}.hero-img,.hero-fade{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:76% 54%}.hero-fade{background:linear-gradient(0deg,rgba(3,9,10,.8),rgba(3,9,10,.04) 59%,rgba(3,9,10,.5)),linear-gradient(90deg,rgba(3,9,10,.18),transparent 68%)}.hero-head{border-top:1px solid #ffffffab;justify-content:space-between;padding-top:11px}.smallcaps,.data-label,.caption,.edition,.short-label{font:500 12px/1.35 var(--mono);letter-spacing:.07em}.smallcaps,.data-label,.short-label{text-transform:uppercase}.headline{justify-content:space-between;gap:20px;align-items:end}.edition{color:white;letter-spacing:.035em;font-size:16px;margin:0 0 18px}h1{font-size:clamp(90px,13.4vw,214px);letter-spacing:-.065em;word-spacing:.04em;line-height:.82}h1 span,.activity-body h2 span{color:var(--orange)}.roundlink{width:61px;height:61px;display:grid;place-items:center;border:1px solid #fafbfbd0;border-radius:50%;margin-bottom:2px}.roundlink svg{width:24px;fill:none;stroke:currentColor;stroke-width:1.5}.roundlink:hover{color:#121512;border-color:var(--orange)}
+.caption{justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line);color:var(--muted);letter-spacing:0;font-size:11px}.report{padding:clamp(50px,6vw,100px) 0 clamp(56px,6vw,100px)}.title-line{align-items:end;justify-content:space-between;gap:14px}h2{font-size:clamp(47px,6vw,102px);line-height:.94;letter-spacing:-.075em}h2 span{color:#987014}.data-label{border:1px solid var(--black);padding:5px 8px;letter-spacing:.035em;font-size:11px;flex:none}.data-intro{margin:16px 0 30px;color:var(--muted);max-width:60ch;text-wrap:pretty}.instrument{background:var(--panel);color:#f8f8f1;padding:clamp(18px,3.1vw,52px);border-top:6px solid var(--orange)}.instrument-top{justify-content:space-between;align-items:flex-start;gap:18px}.chart-title h3{font-size:clamp(26px,3vw,48px);letter-spacing:-.05em;line-height:1}.chart-title p{font-size:14px;color:#c7cbc2;margin-top:8px}.switches{border:1px solid #8f968b;padding:3px;gap:3px;flex-wrap:wrap}.switches button{font:400 13px/1.25 Lab,Arial,sans-serif;color:inherit;background:transparent;border:none;padding:8px 11px;cursor:pointer}.switches button[aria-pressed=true]{background:var(--orange);color:#141810}.readout{justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid #656d60;padding-top:12px;font-size:14px;color:#dbe0d6}.readout strong{color:#fff}.activity-body{padding:clamp(45px,6vw,85px) 0;display:grid;grid-template-columns:1fr 1fr;gap:clamp(22px,5vw,90px)}.activity-body h2 span{color:#91690e}.activity-body h3{font-size:clamp(23px,2vw,36px);line-height:1.04;letter-spacing:-.04em}.activity-body p{margin:14px 0 0;max-width:53ch;color:var(--muted)}footer{padding:26px 0 32px;justify-content:space-between;gap:18px}footer a{font-size:14px}.foot-marks img:first-child{width:110px}.foot-marks img:last-child{width:56px}
+@media(max-width:760px){:root{--mast-h:62px}.inner{width:calc(100% - 38px)}.logos img:first-child{width:112px}.logos img:last-child{width:54px}.mast nav{gap:15px}.hero-content{height:clamp(375px,71vw,475px)}.title-line,.instrument-top{align-items:flex-start;flex-direction:column}.headline{gap:5px}.roundlink{width:46px;height:46px}.data-label{font-size:10px}.activity-body{grid-template-columns:1fr}.readout{align-items:flex-start}}
+@media(max-width:450px){.inner{width:calc(100% - 32px)}.mast nav{gap:9px}.mast nav a{font-size:12px}.logos{gap:7px}.logos img:first-child{width:91px}.logos img:last-child{width:44px}.hero-content{height:370px;padding-bottom:25px}.hero-img{object-position:79% 50%}.headline{align-items:flex-end}.edition{font-size:12px}.smallcaps{font-size:10px}h1{font-size:clamp(65px,17.5vw,94px)}.roundlink{width:35px;height:35px}.roundlink svg{width:18px}.caption{font-size:9px}.instrument{padding:17px 12px 16px}.switches{max-width:100%}.switches button{font-size:12px}.foot-marks{gap:8px}.foot-marks img:first-child{width:80px}.foot-marks img:last-child{width:40px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+#plot{display:grid;gap:12px;margin:30px 0 24px}.period-bar{display:grid;gap:11px;padding:12px 12px 16px;border:1px solid transparent;border-radius:1px;text-align:left;background:transparent;color:#dfe4d9;cursor:pointer;font:400 14px/1.3 Lab,Arial,sans-serif;transition:background .18s,border-color .18s}.period-bar[aria-pressed=true]{background:#2a302b;border-color:#596358}.bar-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px}.bar-head strong{font:500 13px/1.2 var(--mono);color:#fbfff2}.track{height:27px;display:block;position:relative;background:repeating-linear-gradient(90deg,#7981737d 0px,#7981737d 1px,transparent 1px,transparent 10%)}.fill{display:block;position:absolute;left:0;height:100%;top:0}.fill.temporada{background:#adb9a5}.fill.quinzena{background:var(--orange)}#chart-key{display:flex;align-items:center;gap:15px;font:400 12px/1.5 var(--mono)}#chart-key span{display:inline-flex;gap:5px;align-items:center}#chart-key span:before{content:"";width:9px;height:9px;background:#adb9a5}#chart-key .key-period:before{background:var(--orange)}.detail-title{margin:42px 0 14px;font-size:clamp(25px,3vw,43px);line-height:1;letter-spacing:-.055em}.station-table{max-width:100%}.station-table table{border-collapse:collapse;table-layout:fixed;width:100%}.station-table caption{position:absolute;clip-path:inset(100%);overflow:hidden;width:1px;height:1px}.station-table th,.station-table td{border-top:1px solid #babcad;padding:12px 0;text-align:right;vertical-align:top}.station-table thead th,.station-table tbody th{text-align:left}.station-table thead th:not(:first-child){text-align:right}.station-table tbody th{font-weight:400;color:var(--muted)}.station-table th:first-child{width:48%}.station-table td{font-weight:700;font-variant-numeric:tabular-nums}.station-table thead th{font:500 12px/1.25 var(--mono);color:#51564a}.footnote{border-top:1px solid #babcad;padding-top:9px;font-size:13px;color:var(--muted)}.activity-body img{display:block;width:100%;height:auto;margin-top:18px}.activity-body article+article{margin-top:30px}
+@media(max-width:600px){.readout{display:block}.readout #chart-key{margin-top:10px}.track{height:21px}.period-bar{padding:10px 6px}.station-table th,.station-table td{padding:10px 3px}.station-table th:first-child{width:46%}.station-table tbody th,.station-table td{font-size:14px}.station-table thead th{font-size:11px}.bar-head strong{font-size:11px}}
+
+.terrain-band{background:var(--ground);color:#f3f5e8;border-bottom:6px solid var(--orange)}.terrain-layout{display:grid;grid-template-columns:minmax(200px,.7fr) minmax(0,1.65fr);gap:clamp(25px,4vw,70px);align-items:center;padding:clamp(40px,5vw,88px) 0}.terrain-copy .short-label,.terrain-meta{color:#d9e1d2}.terrain-copy h2{margin:21px 0 23px}.terrain-copy h2 span{color:var(--orange)}.terrain-copy>p:not(.short-label){max-width:36ch;color:#d0d7c8}.terrain-numbers{margin-top:28px;display:grid;gap:15px}.terrain-numbers p{display:grid;gap:2px;font-size:12px;color:#c2ccb9}.terrain-numbers strong{color:#fff2c7;font-size:24px;letter-spacing:-.045em}.terrain-panel{min-width:0;background:var(--panel-deep);border:1px solid #596255}.terrain-meta,.terrain-controls{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:13px 18px}.terrain-meta{font:500 11px/1.4 var(--mono);text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #4a5449}.terrain-panel canvas{display:block;width:100%;height:clamp(260px,31vw,490px);cursor:grab;touch-action:pan-y}.terrain-panel canvas:active{cursor:grabbing}.terrain-controls{border-top:1px solid #576153;flex-wrap:wrap}.terrain-controls p,.terrain-credit{font-size:12px;color:#dce1d7}.terrain-controls div{display:flex;gap:5px}.terrain-controls button{min-height:42px;min-width:42px;border:1px solid #778170;color:white;background:none;font:500 13px/1 Lab,Arial,sans-serif;padding:7px 9px;cursor:pointer}.terrain-controls button:hover{border-color:var(--orange);color:var(--orange)}.terrain-credit{padding:0 18px 13px;font-size:10px;line-height:1.4;color:#b8c1b0}
+@media(max-width:850px){.terrain-layout{grid-template-columns:1fr}.terrain-copy h2{margin:12px 0}.terrain-copy>p:not(.short-label){max-width:58ch}.terrain-numbers{display:flex;gap:32px;margin-top:16px}.terrain-panel canvas{height:clamp(235px,60vw,430px)}}
+@media(max-width:450px){.mast nav{gap:8px}.mast nav a{font-size:11px}.logos img:first-child{width:80px}.logos img:last-child{width:37px}.terrain-meta,.terrain-controls{padding:9px 10px}.terrain-credit{padding:0 10px 10px}.terrain-meta{font-size:9px}.terrain-controls{gap:8px}.terrain-controls p{width:100%}.terrain-numbers strong{font-size:20px}.terrain-controls button{min-height:44px;min-width:44px}}
+
+/* ---------- Capa de moviment · Continental ----------
+   Els tokens --dur-* i --ease-* vénen de ../comu/motion.css; els valors de reserva
+   mantenen les transicions si aquell full no carrega. */
+
+/* Capçalera enganxosa. Després de la portada es compacta; el marge inferior compensa
+   l’alçada perduda perquè el contingut de sota no salti. */
+.top{margin-bottom:0;transition:margin-bottom var(--dur-3,420ms) var(--ease-out,ease)}
+.mast{transition:min-height var(--dur-3,420ms) var(--ease-out,ease)}
+.logos{transform-origin:left center;transition:transform var(--dur-3,420ms) var(--ease-out,ease)}
+.top.is-compact{margin-bottom:calc(var(--mast-h) - 56px)}
+.top.is-compact .mast{min-height:56px}
+.top.is-compact .logos{transform:scale(.9)}
+.top .line-progress{background:var(--accent-ink)}
+.mast nav{position:relative}
+.mast nav a{padding:6px 0;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color var(--dur-2,220ms) var(--ease-out,ease)}
+.mast nav a:hover,.mast nav a[aria-current="location"]{text-decoration-color:currentColor}
+/* Amb moviment, l’indicador lliscant substitueix el subratllat. */
+.motion-ok .mast nav a,.motion-ok .mast nav a:hover,.motion-ok .mast nav a[aria-current="location"]{text-decoration-color:transparent}
+.mast nav .nav-ink{background:var(--accent-ink)}
+footer a{transition:text-underline-offset var(--dur-2,220ms) var(--ease-out,ease)}
+footer a:hover{text-underline-offset:8px}
+
+/* Portada */
+.motion-ok:not(.motion-ready) .hero-img,
+.motion-ok:not(.motion-ready) .hero-content{visibility:hidden}
+h1 span{display:inline-block}
+.hero-fade::after{content:"";position:absolute;inset:0;background:#03090a;opacity:var(--dim,0);pointer-events:none}
+.roundlink{position:relative;overflow:hidden;isolation:isolate;transition:color var(--dur-2,220ms) var(--ease-out,ease),border-color var(--dur-2,220ms) var(--ease-out,ease)}
+.roundlink::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:50%;background:var(--orange);transform:scale(0);transition:transform var(--dur-3,420ms) var(--ease-out,ease)}
+.roundlink:hover::before,.roundlink:focus-visible::before{transform:scale(1)}
+.roundlink:focus-visible{color:#121512;border-color:var(--orange)}
+
+/* Xifres de temporada */
+.season-kpis{margin:0 0 clamp(30px,3.4vw,52px)}
+.kpi-cut{font:500 11px/1.35 var(--mono);letter-spacing:.035em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin:0;border-top:1px solid #a7ada1;padding-top:20px}
+.kpi{min-width:0;padding-left:16px;border-left:1px solid #b7bcae}
+.kpi:first-child{padding-left:0;border-left:0}
+.kpi dt{color:var(--muted);font-size:14px}
+.kpi dd{margin:8px 0 0;font-size:clamp(30px,3.8vw,61px);letter-spacing:-.065em;line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums}
+@media(max-width:760px){.kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:22px}.kpi:nth-child(3){padding-left:0;border-left:0}}
+
+/* Gràfic: barres per transformació, entrada esglaonada i focus de fila */
+.fill{width:100%;transform-origin:left center;will-change:transform;transition:transform var(--dur-3,420ms) var(--ease-out,ease)}
+.plot-entering .fill{transition-duration:var(--dur-4,720ms);transition-delay:calc(var(--i,0) * 70ms)}
+.plot-entering .fill.quinzena{transition-delay:calc(var(--i,0) * 70ms + 260ms)}
+.period-bar{transition:background-color var(--dur-2,220ms) var(--ease-out,ease),border-color var(--dur-2,220ms) var(--ease-out,ease),opacity var(--dur-2,220ms) var(--ease-out,ease)}
+.period-bar:hover:not([aria-pressed=true]){border-color:#3e463d}
+.bar-head strong{font-variant-numeric:tabular-nums}
+@media (hover:hover){#plot:has(.period-bar:hover) .period-bar:not(:hover){opacity:.6}}
+.switches button{transition:background-color var(--dur-2,220ms) var(--ease-out,ease),color var(--dur-2,220ms) var(--ease-out,ease)}
+.switches button:hover:not([aria-pressed=true]){background:#30372f}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+/* Superfícies fosques: anell groc amb separació del color del fons (com les de Nescafé). */
+.instrument{--focus-ink:var(--orange);--focus-halo:var(--panel)}
+.terrain-band{--focus-ink:var(--orange);--focus-halo:var(--panel-deep)}
+/* Fins que report.js ha omplert les dades (script report-wait de l’index.html): #dades i el que
+   ve després no es veuen mentre la secció creix. La línia d’edició de la portada reserva la seva línia. */
+.report-wait #dades,.report-wait #dades~*{visibility:hidden}
+.edition{min-height:1.35em}
+
+/* Relleu */
+.terrain-controls button{transition:border-color var(--dur-2,220ms) var(--ease-out,ease),color var(--dur-2,220ms) var(--ease-out,ease),background-color var(--dur-1,120ms) var(--ease-out,ease)}
+.terrain-controls button:active{background:#2a3229}
+
+/* Relleu · fase 2: escenari, capa de sonda, brúixola i lectura */
+.terrain-stage{position:relative}
+.terrain-stage .terrain-overlay{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;cursor:auto}
+.terrain-compass{position:absolute;top:12px;left:12px;width:52px;height:52px;pointer-events:none;color:#e1e7d9}
+.terrain-compass svg{display:block;width:100%;height:100%;overflow:visible}
+.terrain-compass text{fill:currentColor;font:700 9px/1 Lab,Arial,sans-serif;letter-spacing:.04em}
+.terrain-controls .terrain-status{display:grid;flex:1 1 16rem;min-width:0;gap:0}
+.terrain-status>p{grid-area:1/1;align-self:center;transition:opacity var(--dur-2,220ms) var(--ease-out,ease)}
+.terrain-status .terrain-probe{opacity:0;font-variant-numeric:tabular-nums;color:#fff2c7}
+.terrain-status.is-probing #terrain-readout{opacity:0}
+.terrain-status.is-probing .terrain-probe{opacity:1}
+/* Cotes del retall: s’encenen quan l’escombrat de corbes hi passa (vol d’entrada).
+   El color només s’anima en encendre’s: si la polaritat de la banda canvia amb la xifra apagada,
+   la tinta salta amb la resta del text en lloc de passar per un gris del to del fons. */
+.terrain-numbers .cota{text-decoration-line:underline;text-decoration-thickness:1px;text-underline-offset:.14em;text-decoration-color:transparent;transition:text-decoration-color var(--dur-3,420ms) var(--ease-out,ease)}
+.terrain-numbers .cota.is-lit{color:var(--orange);text-decoration-color:currentColor;transition:color var(--dur-3,420ms) var(--ease-out,ease),text-decoration-color var(--dur-3,420ms) var(--ease-out,ease)}
+
+/* Activacions: bloc pendent amb filet, sense placa grisa */
+.activity-band{background:var(--paper);border-bottom:1px solid var(--line)}
+.pending-block{border:1px solid var(--line);padding:clamp(20px,2.4vw,36px);min-height:clamp(180px,15vw,250px);display:flex;flex-direction:column;justify-content:space-between;gap:28px}
+.activity-body .pending-block h3{display:flex;align-items:center;gap:10px;font:500 12px/1.35 var(--mono);letter-spacing:.07em;text-transform:uppercase}
+.pending-block h3::before{content:"";flex:none;width:8px;height:8px;background:var(--orange)}
+.activity-body .pending-block p{margin:0;max-width:34ch;color:var(--black);font-size:clamp(20px,1.7vw,27px);line-height:1.18;letter-spacing:-.03em}
+/* Fase 3: capçalera de fitxa (etiqueta a l’esquerra, edició a la dreta) separada per un filet */
+.pending-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 18px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.pending-edition{font:500 12px/1.35 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+
+/* ---------- Fons de banda (fase 3) ----------
+   Només amb html.motion-ok.band-on, que motion-continental.js posa a partir de 900 px.
+   Sense aquesta classe (moviment reduït, finestra estreta, sense JS) es manté el tall sec.
+   Un fons fix del color del terreny canvia d’opacitat sobre el paper: és la interpolació
+   paper → terreny → paper. Les seccions deixen el fons transparent perquè es vegi. */
+.band-backdrop{position:fixed;inset:0;z-index:-1;background:var(--ground);opacity:0;pointer-events:none}
+.motion-ok.band-on .terrain-band,.motion-ok.band-on .activity-band{background:transparent}
+/* Polaritat clara (band-ground: fons ja prou fosc). Les seccions de paper passen a tinta clara. */
+.motion-ok.band-on.band-ground :is(.caption,.report,.activity-band,footer){--black:var(--ink-ground);--muted:var(--ink-ground-2);--line:var(--rule-ground);color:var(--ink-ground)}
+.motion-ok.band-on.band-ground :is(.kpi-grid,.kpi,.station-table th,.station-table td,.footnote){border-color:var(--rule-ground)}
+.motion-ok.band-on.band-ground .station-table thead th{color:var(--ink-ground-2)}
+.motion-ok.band-on.band-ground :is(.report,.activity-body) h2 span{color:var(--orange)}
+.motion-ok.band-on.band-ground footer img{filter:invert(1)}
+/* Polaritat fosca (fons encara clar). El text del relleu, fora del panell, passa a tinta de paper. */
+.motion-ok.band-on:not(.band-ground) .terrain-copy{color:var(--ink-paper)}
+.motion-ok.band-on:not(.band-ground) .terrain-copy .short-label,
+.motion-ok.band-on:not(.band-ground) .terrain-copy>p:not(.short-label),
+.motion-ok.band-on:not(.band-ground) .terrain-numbers p{color:var(--ink-paper-2)}
+.motion-ok.band-on:not(.band-ground) .terrain-numbers strong{color:var(--ink-paper)}
+.motion-ok.band-on:not(.band-ground) .terrain-copy h2 span{color:var(--mark-paper)}
+/* Fons a mig camí (band-strong): els grisos secundaris prenen la tinta principal de la
+   polaritat activa perquè el text no baixi de 4,5:1 mentre el fons canvia. */
+.motion-ok.band-on.band-strong:not(.band-ground) :is(.caption,.report,.activity-band,footer){--muted:var(--ink-paper)}
+.motion-ok.band-on.band-strong:not(.band-ground) :is(.kpi-grid,.kpi,.station-table th,.station-table td,.footnote){border-color:var(--ink-paper-2)}
+.motion-ok.band-on.band-strong:not(.band-ground) .station-table thead th,
+.motion-ok.band-on.band-strong:not(.band-ground) .terrain-copy .short-label,
+.motion-ok.band-on.band-strong:not(.band-ground) .terrain-copy>p:not(.short-label),
+.motion-ok.band-on.band-strong:not(.band-ground) .terrain-numbers p{color:var(--ink-paper)}
+.motion-ok.band-on.band-strong.band-ground :is(.caption,.report,.activity-band,footer){--muted:var(--ink-ground)}
+.motion-ok.band-on.band-strong.band-ground .station-table thead th,
+.motion-ok.band-on.band-strong.band-ground .terrain-copy .short-label,
+.motion-ok.band-on.band-strong.band-ground .terrain-copy>p:not(.short-label),
+.motion-ok.band-on.band-strong.band-ground .terrain-numbers p{color:var(--ink-ground)}

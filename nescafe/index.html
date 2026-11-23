@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#211b18">
+<title>Un cafè a peu de pista · NESCAFÉ × LINE</title>
+<script>/* Preload de fonts només amb http(s): amb file:// el navegador el bloqueja per CORS i deixa errors a la consola. */(function(){if(!/^https?:$/.test(location.protocol))return;['assets/InstrumentSerif.ttf'].forEach(function(h){var l=document.createElement('link');l.rel='preload';l.as='font';l.type=/\.ttf$/.test(h)?'font/ttf':'font/otf';l.crossOrigin='anonymous';l.href=h;document.head.appendChild(l)})})();</script>
+<link rel="stylesheet" href="quadern.css">
+<link rel="stylesheet" href="../comu/vendor/lenis.css">
+<link rel="stylesheet" href="../comu/motion.css">
+<script>/* Mateixa condició que comu/motion.js, però abans del primer pintat: la portada no surt sense dividir. Si motion.js no arriba, el contingut es mostra igualment al cap de 3 s. */(function(){var r=document.documentElement;if(window.matchMedia&&!matchMedia('(prefers-reduced-motion: reduce)').matches){r.classList.add('motion-ok');setTimeout(function(){r.classList.add('motion-ready')},3000)}})();</script>
+<script defer src="../comu/vendor/gsap.min.js"></script>
+<script defer src="../comu/vendor/ScrollTrigger.min.js"></script>
+<script defer src="../comu/vendor/SplitText.min.js"></script>
+<script defer src="../comu/vendor/lenis.min.js"></script>
+<script defer src="../comu/motion.js"></script>
+<script defer src="edicio.js"></script>
+<script defer src="quadern.js"></script>
+<script defer src="motion-nescafe.js"></script>
+</head>
+<body>
+<a class="skip" href="#cronica">Ves a la crònica</a>
+<header class="mast">
+  <div class="mast-inner">
+    <a href="#portada" class="signature" aria-label="NESCAFÉ i LINE, portada"><img src="assets/nescafe.png" width="202" height="60" alt="NESCAFÉ"><span>×</span><img src="assets/line.svg" alt="LINE"></a>
+    <nav aria-label="Índex de lectura"><a href="#cronica">Crònica</a><a href="#sorteig">Sorteig</a><a id="gallery-link" href="#quadern">Quadern</a><a href="#estacions">Estacions</a></nav>
+  </div>
+  <i class="line-progress" data-progress aria-hidden="true"></i>
+</header>
+<main id="portada">
+  <section class="cover section-width" aria-labelledby="headline">
+    <div class="running"><span>Quadern de patrocini</span><span id="edition">Edició de mostra · FGC</span><i class="rule" aria-hidden="true"></i></div>
+    <div class="spread">
+      <div class="cover-copy">
+        <div class="label redline"><span><span id="cover-station">La Molina</span> · Activació de marca</span></div>
+        <h1 id="headline">Un cafè<br><em>a peu de pista.</em></h1>
+        <p id="cover-deck">La crònica de l’activació de NESCAFÉ a La Molina i la resposta en línia al sorteig de Pirineu 365.</p>
+        <a class="cta" href="#cronica">Llegir la crònica <span aria-hidden="true">↓</span></a>
+      </div>
+      <figure class="cover-visual">
+        <div class="cover-frame"><div class="cover-drift">
+          <img src="assets/esqui.jpg" srcset="assets/esqui-960.jpg 960w, assets/esqui-1440.jpg 1440w, assets/esqui.jpg 1536w" sizes="(max-width: 650px) 100vw, (min-width: 1480px) 740px, 52vw" alt="Una mà amb guant de pell sosté una tassa vermella de cafè fumejant davant d’una serralada nevada." width="1536" height="1024" fetchpriority="high">
+        </div></div>
+        <figcaption>Fotografia d’ambient generada per a la portada.</figcaption>
+      </figure>
+    </div>
+  </section>
+  <section class="chapter section-width" id="cronica" aria-labelledby="title-cronica">
+    <div class="chapter-label"><i class="rule" data-draw aria-hidden="true"></i><span class="label redline">Crònica de mostra</span><span class="folio" id="story-location">La Molina</span></div>
+    <div class="story">
+      <h2 id="title-cronica">Una pausa<br><em>per al cafè.</em></h2>
+      <div class="story-body"><blockquote><p id="story-title">Molt bona acollida de Nescafé a La&nbsp;Molina!</p></blockquote><p id="story-text">Un cap de setmana amb un flux constant de visitants, cues per tastar el cafè i comentaris molt positius sobre el gust i la practicitat del producte.</p></div>
+    </div>
+    <p class="handoff" id="gallery-handoff" hidden><i class="rule" data-draw aria-hidden="true"></i><a href="#quadern"><span class="label">Arxiu fotogràfic</span> <span class="handoff-line"><span id="handoff-place"></span> <span class="handoff-go">Veure el quadern</span></span></a></p>
+  </section>
+  <section class="giveaway" id="sorteig" aria-labelledby="title-sorteig"><div class="section-width">
+    <div class="chapter-label"><i class="rule" data-draw aria-hidden="true"></i><span class="label">Resposta digital</span><span class="folio" id="cutoff">Tall de divendres</span></div>
+    <div class="giveaway-head"><h2 id="title-sorteig">El sorteig<br><em id="draw-name">de Pirineu 365.</em></h2><p>El recompte disponible recull les participacions registrades i les pàgines vistes fins <span id="cutoff-day">divendres</span>.</p></div>
+    <dl class="figures"><div><dt>Participacions al sorteig</dt><dd id="entries">3.421</dd></div><div><dt>Pàgines vistes</dt><dd id="views">17.800</dd></div></dl>
+  </div></section>
+  <section class="gallery-chapter section-width" id="quadern" aria-labelledby="gallery-title" hidden>
+    <div class="chapter-label"><i class="rule" data-draw aria-hidden="true"></i><span class="label redline">Arxiu fotogràfic</span><span class="folio" id="gallery-period"></span></div>
+    <div class="gallery-heading"><h2 id="gallery-title">Quadern de camp</h2><p id="gallery-note"></p></div>
+    <div class="contact-sheet">
+      <figure class="featured"><div class="stage" id="stage"></div>
+        <figcaption><span id="media-caption" aria-live="polite"></span><button id="lightbox-open" type="button">Ampliar <span aria-hidden="true">↗</span></button></figcaption></figure>
+      <div class="gallery-side"><div class="thumb-head"><span class="label">Selecció</span><span id="media-count"></span></div><div class="thumbs" id="thumbs" role="group" aria-label="Tria una peça de la galeria"></div>
+        <div class="paging"><button type="button" data-page="-1" aria-label="Peça anterior">←</button><button type="button" data-page="1" aria-label="Peça següent">→</button></div>
+      </div>
+    </div>
+    <dialog id="lightbox" aria-label="Visor ampliat" data-lenis-prevent><div class="dialog-top"><span id="lightbox-title"></span><button type="button" id="lightbox-close">Tancar ×</button></div><div id="lightbox-stage"></div><div class="dialog-foot"><button type="button" data-page="-1" aria-label="Peça anterior">←</button><p id="lightbox-caption" aria-live="polite"></p><button type="button" data-page="1" aria-label="Peça següent">→</button></div></dialog>
+  </section>
+  <section class="chapter section-width" id="estacions" aria-labelledby="station-title">
+    <div class="chapter-label"><i class="rule" data-draw aria-hidden="true"></i><span class="label redline">Context de les estacions</span><span class="folio">FGC Turisme</span></div>
+    <div class="station-head"><h2 id="station-title">L<span class="ap">’</span>índex de les<br><em>sis estacions.</em></h2><p id="station-intro">Consulta quines estacions tenen crònica o material visual en aquesta edició. Les xifres d’afluència, dies d’obertura, pistes i quilòmetres queden pendents del fitxer d’FGC.</p></div>
+    <div class="filterbar" aria-label="Filtra les estacions" role="group"><button type="button" data-filter="all" aria-pressed="true">Totes</button><button type="button" data-filter="material" aria-pressed="false">Amb material</button></div>
+    <ul id="station-content" class="station-list"></ul><p class="sr-only" aria-live="polite" id="list-status"></p>
+  </section>
+  <footer><div class="section-width foot"><div class="foot-sign"><img src="assets/line.svg" alt="LINE"><span>×</span><img src="assets/nescafe.png" width="202" height="60" alt="NESCAFÉ"></div><p>Quadern de patrocini · Exploració interna</p><a href="#portada">Torna a l’inici ↑</a></div></footer>
+</main>
+</body></html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#ffbd26">
+  <title>Continental × LINE · La Molina</title>
+  <script>/* Preload de fonts només amb http(s): amb file:// el navegador el bloqueja per CORS i deixa errors a la consola. */(function(){if(!/^https?:$/.test(location.protocol))return;[].forEach(function(h){var l=document.createElement('link');l.rel='preload';l.as='font';l.type=/\.ttf$/.test(h)?'font/ttf':'font/otf';l.crossOrigin='anonymous';l.href=h;document.head.appendChild(l)})})();</script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../comu/vendor/lenis.css">
+  <link rel="stylesheet" href="../comu/motion.css">
+  <script>/* Mateixa condició que comu/motion.js, però abans del primer pintat: la portada no surt sense dividir. Si motion.js no arriba, el contingut es mostra igualment al cap de 3 s. */(function(){var r=document.documentElement;if(window.matchMedia&&!matchMedia('(prefers-reduced-motion: reduce)').matches){r.classList.add('motion-ok');setTimeout(function(){r.classList.add('motion-ready')},3000)}})();</script>
+  <script>/* Les dades les omple report.js (defer): fins llavors #dades queda invisible i el seu creixement no desplaça cap contingut visible (CLS). Reserva de 3 s si report.js no arriba. */(function(){var r=document.documentElement;r.classList.add('report-wait');setTimeout(function(){r.classList.remove('report-wait')},3000)})();</script>
+  <script defer src="../comu/vendor/gsap.min.js"></script>
+  <script defer src="../comu/vendor/ScrollTrigger.min.js"></script>
+  <script defer src="../comu/vendor/SplitText.min.js"></script>
+  <script defer src="../comu/vendor/lenis.min.js"></script>
+  <script defer src="../comu/motion.js"></script>
+  <script defer src="edicio.js"></script>
+  <script defer src="report.js"></script>
+  <script defer src="motion-continental.js"></script>
+</head>
+<body>
+  <a class="skip" href="#dades">Ves a les dades</a>
+  <header class="top"><div class="inner mast">
+    <div class="logos"><img width="150" height="28" src="assets/continental.svg" alt="Continental"><span aria-hidden="true">×</span><img width="70" height="10" src="assets/line.svg" alt="LINE"></div>
+    <nav aria-label="Informe"><a href="#dades">Dades</a><a href="#territori">Territori</a><a href="#activacions">Activacions</a></nav>
+  </div><i class="line-progress" data-progress aria-hidden="true"></i></header>
+  <main>
+    <section class="hero" id="inici" aria-labelledby="page-title"><picture><source type="image/webp" srcset="assets/portada-960.webp 960w, assets/portada-1440.webp 1440w, assets/portada-1920.webp 1920w, assets/portada-2300.webp 2300w" sizes="100vw"><img class="hero-img" src="assets/portada.jpg" srcset="assets/portada-960.jpg 960w, assets/portada-1440.jpg 1440w, assets/portada-1700.jpg 1700w, assets/portada.jpg 2300w" sizes="100vw" width="2300" height="852" fetchpriority="high" decoding="async" alt=""></picture>
+      <div class="hero-fade"></div><div class="inner hero-content">
+        <div class="hero-head"><span class="smallcaps">Informe de patrocini</span><span class="smallcaps">FGC Turisme</span></div>
+        <div class="headline"><div><p class="edition" id="edicio"></p><h1 id="page-title">La Molina<span>.</span></h1></div>
+        <a class="roundlink" href="#dades" aria-label="Baixa a les dades de La Molina"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4v15m-7-7 7 7 7-7"/></svg></a></div>
+      </div>
+    </section>
+    <div class="caption inner"><span>Patrocini Continental · Una estació</span><span>Imatge conceptual</span></div>
+    <section id="dades" class="inner report">
+      <div class="title-line"><h2 data-reveal>L’estació en xifres<span>.</span></h2><span class="data-label" id="tipus"></span></div>
+      <div class="data-intro" id="intro"></div>
+      <div class="season-kpis" id="kpis"></div>
+      <div class="instrument">
+        <div class="instrument-top"><div class="chart-title"><h3 id="chart-title"></h3><p id="chart-sub"></p></div><div class="switches" id="metrics" role="group" aria-label="Indicador del gràfic"></div></div>
+        <div id="plot"></div>
+        <div class="readout"><div id="read-value"></div><div id="chart-key"></div></div>
+        <p class="sr-only" id="read-live" aria-live="polite" aria-atomic="true"></p>
+      </div>
+      <h3 class="detail-title" data-reveal>El detall per quinzena</h3>
+      <div class="station-table" id="facts"></div>
+    </section>
+    <section class="terrain-band" id="territori" aria-labelledby="territori-title">
+      <div class="inner terrain-layout">
+        <div class="terrain-copy">
+          <p class="short-label">Territori · La Molina</p>
+          <h2 id="territori-title" data-reveal>El relleu<span>.</span></h2>
+          <p>El bosc i les carenes envolten la base del Cap de Comella. Gira el model per recórrer un retall de sis quilòmetres de costat.</p>
+          <div class="terrain-numbers"><p><strong><span class="cota" data-cota="baixa">1.221</span>–<span class="cota" data-cota="alta">2.481</span> m</strong>Cotes del retall</p><p><strong>100 m</strong>Equidistància de les corbes</p></div>
+        </div>
+        <div class="terrain-panel">
+          <div class="terrain-meta"><span>Model digital del terreny</span><span>6 × 6 km</span></div>
+          <div class="terrain-stage"><canvas id="terreny" tabindex="0" aria-label="Relleu tridimensional de La Molina. Fletxa esquerra i dreta per girar, amunt i avall per inclinar, més i menys per apropar o allunyar, Inici per restablir." aria-describedby="terrain-readout">Relleu de sis quilòmetres de costat al voltant del Cap de Comella inferior. Cotes de 1.221 a 2.481 metres.</canvas></div>
+          <div class="terrain-controls"><div class="terrain-status"><p id="terrain-readout">Arrossega per girar i inclinar el relleu.</p><p class="terrain-probe" aria-hidden="true"></p></div><div role="group" aria-label="Orientació del relleu"><button id="gira-esquerra" type="button" aria-label="Gira el relleu a l’esquerra">←</button><button id="gira-dreta" type="button" aria-label="Gira el relleu a la dreta">→</button><button id="inclina-amunt" type="button" aria-label="Inclina el relleu cap amunt">↑</button><button id="inclina-avall" type="button" aria-label="Inclina el relleu cap avall">↓</button><button id="apropa" type="button" aria-label="Apropa el relleu">+</button><button id="allunya" type="button" aria-label="Allunya el relleu">−</button><button id="restableix" type="button">Restableix</button></div></div>
+          <p class="terrain-credit">Mapzen Terrain Tiles · Copernicus EU-DEM, Unió Europea · Fonts globals USGS i NOAA. Corbes cada 100 m. Escala vertical ×1,7.</p>
+        </div>
+      </div>
+    </section>
+    <section class="activity-band" id="activacions"><div class="inner activity-body">
+      <h2 data-reveal>Activacions<span>.</span></h2><div id="activitat"></div>
+    </div></section>
+    <footer class="inner"><div class="foot-marks"><img src="assets/continental.svg" alt="Continental"><span>×</span><img src="assets/line.svg" alt="LINE"></div>
+      <a href="#inici">Torna a l’inici ↑</a></footer>
+  </main>
+  <noscript>Activa JavaScript per consultar el gràfic de la mostra.</noscript>
+</body></html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FGC · Microsites de patrocini</title>
+<script>
+/* Estat inicial des del primer frame: motion.js (defer) arriba després del primer
+   pintat, i sense això el títol i les targetes es veurien un instant abans d'amagar-se
+   per a l'entrada (portal.css). motion.js repeteix la classe i la treu si les
+   biblioteques no carreguen; el failsafe cobreix el cas que motion.js no arribi. */
+(function (d) {
+  if (!window.matchMedia || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  d.classList.add('motion-ok');
+  setTimeout(function () { d.classList.add('motion-ready'); }, 3000);
+})(document.documentElement);
+</script>
+<script>/* Preload de fonts només amb http(s): amb file:// el navegador el bloqueja per CORS i deixa errors a la consola. */(function(){if(!/^https?:$/.test(location.protocol))return;[].forEach(function(h){var l=document.createElement('link');l.rel='preload';l.as='font';l.type=/\.ttf$/.test(h)?'font/ttf':'font/otf';l.crossOrigin='anonymous';l.href=h;document.head.appendChild(l)})})();</script>
+<link rel="stylesheet" href="portal.css">
+<link rel="stylesheet" href="comu/vendor/lenis.css">
+<link rel="stylesheet" href="comu/motion.css">
+<script defer src="comu/vendor/gsap.min.js"></script>
+<script defer src="comu/vendor/ScrollTrigger.min.js"></script>
+<script defer src="comu/vendor/SplitText.min.js"></script>
+<script defer src="comu/vendor/lenis.min.js"></script>
+<script defer src="comu/motion.js"></script>
+<script defer src="nescafe/edicio.js"></script>
+<script defer src="continental/edicio.js"></script>
+<script defer src="portal.js"></script>
+</head>
+<body>
+<header class="site-head shell"><img src="nescafe/assets/line.svg" width="92" height="13" alt="LINE"><span>FGC Turisme · Patrocinis</span></header>
+<main class="shell">
+<div class="heading"><h1>Informes de patrocini.</h1><p>Dues experiències per explorar les estacions i les activacions de marca.</p></div>
+<div class="pages">
+<a href="nescafe/index.html" class="panel nes"><img class="art" src="nescafe/assets/esqui-960.jpg" srcset="nescafe/assets/esqui-960.jpg 960w, nescafe/assets/esqui-1440.jpg 1440w, nescafe/assets/esqui.jpg 1536w" sizes="(max-width:780px) 100vw, min(62vw, 920px)" width="1536" height="1024" fetchpriority="high" alt=""><span class="shade"></span><img class="logotype" src="nescafe/assets/nescafe.png" width="202" height="60" alt="Nescafé"><div><p class="meta">Mostra d’activació · La Molina i Boí Taüll</p><p class="kpi" id="kpi-nes" hidden><span class="kpi-clip"><span class="kpi-in"></span></span></p><div class="row"><h2>El quadern de neu</h2><span aria-hidden="true" class="arrow"><span class="arrow-glyph">↗</span></span></div></div><i class="strip"></i></a>
+<a href="continental/index.html" class="panel cont"><img class="art" src="continental/assets/portada-960.jpg" srcset="continental/assets/portada-960.jpg 960w, continental/assets/portada-1440.jpg 1440w, continental/assets/portada-1700.jpg 1700w, continental/assets/portada.jpg 2300w" sizes="(max-width:780px) min(175vw, 1080px), min(111vw, 1620px)" width="2300" height="852" fetchpriority="high" alt=""><span class="shade"></span><img class="logotype" src="continental/assets/continental.svg" width="186" height="34" alt="Continental"><div><p class="meta">Simulació d’explotació · La Molina</p><p class="kpi" id="kpi-cont" hidden><span class="kpi-clip"><span class="kpi-in"></span></span></p><div class="row"><h2>L’estació en xifres</h2><span aria-hidden="true" class="arrow"><span class="arrow-glyph">↗</span></span></div></div><i class="strip"></i></a>
+</div>
+</main>
+<footer class="site-foot shell"><div class="foot"><span>Revisió interna · LINE</span></div><details class="sources"><summary>Referències de disseny i interacció</summary><ul>
+<li><a href="https://github.com/russellsamora/scrollama">Scrollama</a> · Capítols que segueixen el desplaçament del lector a la crònica de Nescafé.</li>
+<li><a href="https://github.com/observablehq/plot/blob/main/docs/interactions/pointer.md">Observable Plot</a> · Selecció d’una quinzena per llegir les xifres exactes de Continental.</li>
+<li><a href="https://github.com/codrops/ScrollBasedLayoutAnimations">Codrops</a> i <a href="https://github.com/davidjerleke/embla-carousel">Embla Carousel</a> · Dues referències per passar d’una col·lecció d’imatges a l’exploració de cada peça.</li>
+</ul></details></footer>
+</body>
+</html>
